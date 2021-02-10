@@ -102,7 +102,7 @@ const MainPage = (props) => {
           </ul>
 
           <div className="catalog__movies-list">
-            {movies.map((movie, i) => <MovieCard key={{movie} + i} />)}
+            {movies.map((i) => <MovieCard key={i} />)}
           </div>
 
           <div className="catalog__more">

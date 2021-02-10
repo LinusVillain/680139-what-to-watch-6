@@ -9,6 +9,6 @@ const moviePromo = {
 };
 
 ReactDOM.render(
-    <App props={moviePromo} />,
+    <App moviePromo={moviePromo} />,
     document.querySelector(`#root`)
 );
