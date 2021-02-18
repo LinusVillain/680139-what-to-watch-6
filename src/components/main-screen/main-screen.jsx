@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import MovieCard from '../movie-card/movie-card';
 
-const MainPage = (props) => {
+const MainScreen = (props) => {
   const {title, genre, year} = props;
 
   const MOVIE_COUNT = 20;
@@ -128,10 +128,10 @@ const MainPage = (props) => {
   );
 };
 
-MainPage.propTypes = {
+MainScreen.propTypes = {
   title: PropTypes.string.isRequired,
   genre: PropTypes.string.isRequired,
   year: PropTypes.number.isRequired
 };
 
-export default MainPage;
+export default MainScreen;
