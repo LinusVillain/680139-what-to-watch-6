@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-const AddReviewScreen = () => {
+const ReviewFormScreen = () => {
   return (
     <section className="movie-card movie-card--full">
       <div className="movie-card__header">
@@ -93,4 +93,4 @@ const AddReviewScreen = () => {
   );
 };
 
-export default AddReviewScreen;
+export default ReviewFormScreen;

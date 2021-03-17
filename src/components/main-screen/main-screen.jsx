@@ -1,12 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import MovieCard from '../movie-card/movie-card';
+import {Link} from 'react-router-dom';
+import MovieList from '../movie-list/movie-list';
 
 const MainScreen = (props) => {
-  const {title, genre, year} = props;
-
-  const MOVIE_COUNT = 20;
-  const movies = new Array(MOVIE_COUNT).fill();
+  const {moviePromo, films} = props;
+  const {title, genre, year} = moviePromo;
 
   return (
     <React.Fragment>
@@ -19,11 +18,11 @@ const MainScreen = (props) => {
 
         <header className="page-header movie-card__head">
           <div className="logo">
-            <a className="logo__link">
+            <Link to="/" className="logo__link">
               <span className="logo__letter logo__letter--1">W</span>
               <span className="logo__letter logo__letter--2">T</span>
               <span className="logo__letter logo__letter--3">W</span>
-            </a>
+            </Link>
           </div>
 
           <div className="user-block">
@@ -101,22 +100,17 @@ const MainScreen = (props) => {
             </li>
           </ul>
 
-          <div className="catalog__movies-list">
-            {movies.map((i) => <MovieCard key={i} />)}
-          </div>
+          <MovieList films={films} />
 
-          <div className="catalog__more">
-            <button className="catalog__button" type="button">Show more</button>
-          </div>
         </section>
 
         <footer className="page-footer">
           <div className="logo">
-            <a className="logo__link logo__link--light">
+            <Link to="/" className="logo__link logo__link--light">
               <span className="logo__letter logo__letter--1">W</span>
               <span className="logo__letter logo__letter--2">T</span>
               <span className="logo__letter logo__letter--3">W</span>
-            </a>
+            </Link>
           </div>
 
           <div className="copyright">
@@ -129,9 +123,12 @@ const MainScreen = (props) => {
 };
 
 MainScreen.propTypes = {
-  title: PropTypes.string.isRequired,
-  genre: PropTypes.string.isRequired,
-  year: PropTypes.number.isRequired
+  moviePromo: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
+    year: PropTypes.number.isRequired
+  }),
+  films: PropTypes.array.isRequired
 };
 
 export default MainScreen;

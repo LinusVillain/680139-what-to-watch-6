@@ -1,7 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 
-const FilmScreen = () => {
+const FilmScreen = (props) => {
+  const {films} = props;
+  console.log(films);
+  // const {id: filmId} = props.film;
+  // const {film} = films.find((item) => item.id === parseInt(filmId, 10));
+  // console.log(film);
+
   return (
     <React.Fragment>
       <section className="movie-card movie-card--full">
@@ -156,6 +163,12 @@ const FilmScreen = () => {
       </div>
     </React.Fragment>
   );
+};
+
+
+FilmScreen.propTypes = {
+  films: PropTypes.array.isRequired,
+  film: PropTypes
 };
 
 export default FilmScreen;
