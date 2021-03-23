@@ -1,15 +1,24 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import {useHistory} from 'react-router-dom';
 
-const PlayerScreen = () => {
+const PlayerScreen = (props) => {
+  const {match, films} = props;
+  let {id} = match.params;
+  id = id.match(/\d+/)[0];
+  const movie = films.find((film) => film.id === parseInt(id, 10));
+  const {previewImage, runTime} = movie;
+  const history = useHistory();
+
   let positionStyle = {
     left: `30%`
   };
 
   return (
     <div className="player">
-      <video src="#" className="player__video" poster="img/player-poster.jpg"></video>
+      <video src="#" className="player__video" poster={previewImage}></video>
 
-      <button type="button" className="player__exit">Exit</button>
+      <button onClick={() => history.goBack()} type="button" className="player__exit">Exit</button>
 
       <div className="player__controls">
         <div className="player__controls-row">
@@ -17,7 +26,7 @@ const PlayerScreen = () => {
             <progress className="player__progress" value="30" max="100"></progress>
             <div className="player__toggler" style={positionStyle}>Toggler</div>
           </div>
-          <div className="player__time-value">1:30:29</div>
+          <div className="player__time-value">{runTime + ` m`}</div>
         </div>
 
         <div className="player__controls-row">
@@ -39,6 +48,11 @@ const PlayerScreen = () => {
       </div>
     </div>
   );
+};
+
+PlayerScreen.propTypes = {
+  match: PropTypes.object.isRequired,
+  films: PropTypes.array.isRequired
 };
 
 export default PlayerScreen;

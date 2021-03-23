@@ -22,17 +22,11 @@ const App = (props) => {
           <SignInScreen />
         </Route>
         <Route exact path="/mylist">
-          <MyListScreen />
+          <MyListScreen films={films}/>
         </Route>
-        <Route exact path="/films/:id">
-          <FilmScreen films={films} />
-        </Route>
-        <Route exact path="/films/:id/review">
-          <ReviewFormScreen />
-        </Route>
-        <Route exact path="/player/:id">
-          <PlayerScreen />
-        </Route>
+        <Route exact path="/films/:id" render={(serviceProps) => <FilmScreen {...serviceProps} films={films} />} />
+        <Route exact path="/films/:id/review" render={(serviceProps) => <ReviewFormScreen {...serviceProps} films={films} />} />
+        <Route exact path="/player/:id" render={(serviceProps) => <PlayerScreen {...serviceProps} films={films} />} />
         <Route>
           <NotFoundScreen />
         </Route>
